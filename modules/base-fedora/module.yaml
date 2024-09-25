@@ -10,6 +10,8 @@ artifacts:
   path: entrypoint-nested.sh
   target: entrypoint-nested.sh
 envs:
+- name: WORK_DIR
+  value: /projects
 - name: HOME
   value: /home/user
 - name: BUILDAH_ISOLATION
@@ -43,5 +45,6 @@ packages:
   - fuse-overlayfs
   - slirp4netns
   - python3.9
+  - binutils
 execute:
-- script: init.sh
+- script: setup-entrypoint.sh

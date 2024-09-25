@@ -42,6 +42,16 @@ cekit build podman
 
 The developer base image is defined in the `image.yaml` file which is automatically picked up by CEkit. The `image.yaml` defines the name, version (tag), base image and modules that will be used to compose the image.
 
+## Building Images specifying a descriptor
+
+You can build your image pointing to a specific [image descriptor](https://docs.cekit.io/en/latest/descriptor/image.html) which describes  how the images needs to be built by CEKit.
+
+For instance to build a .NET 8 image based on Fedora 42, we can run:
+
+```
+cekit --descriptor images/devspaces-dotnet-8-fedora.yaml build podman --tag quay.io/redhat-cop/devspaces-dotnet-8:fedora42
+```
+
 ## Using Overrides to inject language images
 
 CEKit also supports [overrides](https://docs.cekit.io/en/latest/handbook/overrides.html). Overrides allow you to modify certain parts of a build to produce slightly different variations of an image without defining a completely separate build. For our purposes, we're going to use overrides to inject an alternate language image as our FROM image.

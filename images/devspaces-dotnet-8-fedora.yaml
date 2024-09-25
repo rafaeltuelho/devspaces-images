@@ -1,0 +1,30 @@
+# This is an image descriptor for CEkit
+schema_version: 1
+
+name: &name "devspaces-dotnet-8-fedora"
+description: "Developer image for Red Hat OpenShift Dev Spaces providing .NET 8 based on Fedora minimal image"
+from: quay.io/fedora/fedora-minimal:42
+version: fedora42
+
+packages:
+  manager: microdnf
+  manager_flags: "--disableplugin=subscription-manager --setopt=tsflags=nodocs --setopt=install_weak_deps=0"
+modules:
+  repositories:
+  - path: "../modules"
+  install:
+  - name: base-fedora
+  - name: dotnet-8
+  - name: custom-tooling
+  - name: openshift-tools
+  - name: yq
+
+run:
+  user: 10001
+  workdir: /projects
+  entrypoint:
+  - "/entrypoint.sh"
+  cmd:
+  - "tail"
+  - "-f"
+  - "/dev/null"

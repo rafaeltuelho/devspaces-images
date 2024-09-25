@@ -4,8 +4,8 @@ microdnf update -y
 microdnf clean all
 mkdir -p ${HOME}
 mkdir -p /usr/local/bin
-chgrp -R 0 /home
-chmod -R g=u /home
+chgrp -R 0 /home ${WORK_DIR}
+chmod -R g=u /home ${WORK_DIR}
 cp /tmp/artifacts/entrypoint.sh /entrypoint.sh
 cp /tmp/artifacts/entrypoint-nested.sh /entrypoint-nested.sh
 chown 0:0 /entrypoint.sh
